@@ -1,0 +1,99 @@
+---
+const navItems = [
+  { href: "#experiencia", label: "Experiencia", num: "01" },
+  { href: "#proyectos", label: "Proyectos", num: "02" },
+  { href: "#skills", label: "Skills", num: "03" },
+  { href: "#formacion", label: "Formación", num: "04" },
+  { href: "#contacto", label: "Contacto", num: "05" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-line-strong bg-canvas">
+  <div class="mx-auto flex min-h-15 max-w-5xl items-center justify-between px-5">
+    <a
+      href="#"
+      class="font-mono text-sm font-medium tracking-tight text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+    >
+      <span class="text-ok">~/</span>LG
+    </a>
+
+    <!-- Navegación Desktop -->
+    <nav class="hidden md:flex md:items-center md:gap-6" aria-label="Navegación principal">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="font-mono text-xs text-ink-muted transition-colors duration-150 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+        >
+          <span class="mr-1.5 text-ink-muted/70">{item.num}</span>
+          <span>{item.label}</span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Botón Hamburguesa Mobile -->
+    <button
+      type="button"
+      id="burger-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-drawer"
+      aria-label="Abrir o cerrar menú de navegación"
+      class="group inline-flex cursor-pointer items-center gap-2 rounded-[2px] border border-line-strong bg-surface px-2.5 py-1.5 font-mono text-xs text-ink transition-colors hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong md:hidden"
+    >
+      <span class="inline-flex w-3.5 flex-col gap-1" aria-hidden="true">
+        <span class="block h-[1.5px] w-full bg-ink transition-transform duration-150 group-aria-expanded:translate-y-[2.75px] group-aria-expanded:rotate-45"></span>
+        <span class="block h-[1.5px] w-full bg-ink transition-transform duration-150 group-aria-expanded:-translate-y-[2.75px] group-aria-expanded:-rotate-45"></span>
+      </span>
+      <span id="burger-label">MENÚ</span>
+    </button>
+  </div>
+
+  <!-- Menú Desplegable Mobile -->
+  <div
+    id="mobile-drawer"
+    hidden
+    class="border-t border-line-soft border-b border-line-strong bg-surface md:hidden"
+  >
+    <nav class="mx-auto flex max-w-5xl flex-col px-5" aria-label="Navegación móvil">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="border-b border-line-soft py-3.5 font-mono text-sm text-ink last:border-b-0 hover:text-ok"
+        >
+          <span class="mr-2 text-ink-muted">{item.num}</span>
+          <span>{item.label}</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById("burger-toggle");
+  const drawer = document.getElementById("mobile-drawer");
+  const labelEl = document.getElementById("burger-label");
+
+  if (toggleBtn && drawer && labelEl) {
+    const closeMenu = () => {
+      toggleBtn.setAttribute("aria-expanded", "false");
+      drawer.hidden = true;
+      labelEl.textContent = "MENÚ";
+    };
+
+    toggleBtn.addEventListener("click", () => {
+      const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+      toggleBtn.setAttribute("aria-expanded", String(!expanded));
+      drawer.hidden = expanded;
+      labelEl.textContent = expanded ? "MENÚ" : "CERRAR";
+    });
+
+    drawer.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
+    });
+  }
+</script>

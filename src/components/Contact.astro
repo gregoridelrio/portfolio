@@ -1,0 +1,84 @@
+---
+const email = "laurendelriodev@gmail.com";
+const githubUrl = "https://github.com/gregoridelrio";
+const linkedinUrl = "https://www.linkedin.com/in/laureagregoridelrio";
+---
+
+<section
+  id="contacto"
+  class="mx-auto max-w-5xl scroll-mt-18 border-t border-line-soft px-5 py-16"
+>
+  <div class="mb-8 flex items-baseline justify-between gap-4 border-b border-line-strong pb-3">
+    <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+      Contacto
+    </h2>
+  </div>
+
+  <div class="rounded-[2px] border border-line-strong bg-surface p-6">
+    <p class="mb-5 text-sm leading-relaxed text-ink-muted sm:text-base">
+      Estoy abierto a oportunidades de trabajo y colaboraciones. Escríbeme directamente.
+    </p>
+
+    <div class="mb-5 flex flex-wrap items-center gap-3">
+      <a
+        href={`mailto:${email}`}
+        class="rounded-[2px] border border-line-soft bg-canvas px-3.5 py-2 font-mono text-sm font-medium text-ink transition-colors hover:border-line-strong"
+      >
+        {email}
+      </a>
+      <button
+        type="button"
+        id="copy-email-btn"
+        data-email={email}
+        class="cursor-pointer rounded-[2px] border border-line-strong bg-line-strong px-3.5 py-2 font-mono text-xs text-surface transition-colors hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+      >
+        Copiar correo
+      </button>
+    </div>
+
+    <div class="flex flex-wrap gap-5 font-mono text-xs text-ink sm:text-sm">
+      <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="underline underline-offset-4 hover:text-ok"
+      >
+        GitHub ↗
+      </a>
+      <a
+        href={linkedinUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="underline underline-offset-4 hover:text-ok"
+      >
+        LinkedIn ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="mx-auto max-w-5xl border-t border-line-soft px-5 py-8 font-mono text-xs text-ink-muted">
+  <div class="flex flex-col justify-between gap-2 sm:flex-row">
+    <span>© 2026 Laurea Gregori del Rio.</span>
+    <span>Barcelona</span>
+  </div>
+</footer>
+
+<script>
+  const copyBtn = document.getElementById("copy-email-btn") as HTMLButtonElement | null;
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const addr = copyBtn.dataset.email || "";
+      try {
+        await navigator.clipboard.writeText(addr);
+        const prev = copyBtn.textContent;
+        copyBtn.textContent = "Copiado ✓";
+        setTimeout(() => {
+          copyBtn.textContent = prev || "Copiar correo";
+        }, 1800);
+      } catch {
+        window.location.href = `mailto:${addr}`;
+      }
+    });
+  }
+</script>

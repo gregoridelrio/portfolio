@@ -1,0 +1,123 @@
+---
+const projects = [
+  {
+    code: "PROYECTO_01",
+    title: "meetup-api + meetup-frontend",
+    subtitle: "API REST con OAuth2 + Frontend mobile-first para partidos de fútbol",
+    links: [
+      {
+        label: "Repo API (meetup-api)",
+        href: "https://github.com/gregoridelrio/meetup-api"
+      },
+      {
+        label: "Repo Frontend (meetup-frontend)",
+        href: "https://github.com/gregoridelrio/meetup-frontend"
+      }
+    ],
+    stack: [
+      "Laravel API",
+      "OAuth2 (Passport)",
+      "Roles admin/user",
+      "Pest",
+      "Swagger",
+      "Mobile-First Frontend"
+    ],
+    problem:
+      "Coordinar partidos de fútbol entre jugadores requiere gestionar disponibilidad, permisos y confirmaciones de forma ágil desde el móvil sin acoplar la interfaz al servidor.",
+    implementation:
+      "API REST en Laravel autenticada con OAuth2 mediante Laravel Passport, control de roles (admin/user), documentación automática con Swagger, suite de pruebas con Pest y cliente web mobile-first.",
+    decision:
+      "Separar backend REST y cliente mobile-first permite documentar y testear la API de forma independiente y reutilizarla en futuros clientes, asumiendo mayor coordinación de contratos que en un monolito."
+  },
+  {
+    code: "PROYECTO_02",
+    title: "football-pickup",
+    subtitle: "Aplicación web MVC con autenticación, migraciones y Eloquent ORM",
+    links: [
+      {
+        label: "Repo (football-pickup)",
+        href: "https://github.com/gregoridelrio/football-pickup"
+      }
+    ],
+    stack: ["Laravel MVC", "Laravel Breeze", "Eloquent ORM", "Migraciones SQL"],
+    problem:
+      "Resolver el ciclo completo de registro, inicio de sesión y gestión de partidos con una arquitectura web clásica y un modelo relacional claro.",
+    implementation:
+      "Flujo de autenticación y registro con Laravel Breeze, diseño de esquemas mediante migraciones y relaciones de dominio gestionadas con Eloquent ORM bajo el patrón MVC.",
+    decision:
+      "Apostar por MVC tradicional de Laravel cuando el objetivo principal es la cohesión entre rutas, controladores, vistas y base de datos sin introducir capas de API adicionales."
+  }
+];
+---
+
+<section
+  id="proyectos"
+  class="mx-auto max-w-5xl scroll-mt-18 border-t border-line-soft px-5 py-16"
+>
+  <div class="mb-8 flex items-baseline justify-between gap-4 border-b border-line-strong pb-3">
+    <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+      Proyectos
+    </h2>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    {projects.map((p) => (
+      <article class="rounded-[2px] border border-line-strong bg-surface">
+        <div class="border-b border-line-soft px-5 py-4 sm:px-6 sm:py-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="font-mono text-[11px] text-ink-muted">{p.code}</span>
+
+            <div class="flex flex-wrap gap-3">
+              {p.links.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-mono text-xs text-ink underline underline-offset-4 transition-colors hover:text-ok focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+                >
+                  {link.label} ↗
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <h3 class="mt-1.5 font-mono text-lg font-medium text-ink sm:text-xl">
+            {p.title}
+          </h3>
+          <p class="mt-0.5 mb-3.5 text-sm text-ink-muted">{p.subtitle}</p>
+
+          <ul class="flex flex-wrap gap-1.5" aria-label="Tecnologías del proyecto">
+            {p.stack.map((t) => (
+              <li class="rounded-[2px] border border-line-soft bg-canvas px-2 py-0.5 font-mono text-xs text-ink">
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 px-5 py-4 sm:px-6 sm:py-5 md:grid-cols-3 md:gap-6">
+          <div>
+            <h4 class="mb-1.5 font-mono text-xs font-medium tracking-wider text-ink uppercase">
+              Problema
+            </h4>
+            <p class="text-sm leading-relaxed text-ink-muted">{p.problem}</p>
+          </div>
+
+          <div>
+            <h4 class="mb-1.5 font-mono text-xs font-medium tracking-wider text-ink uppercase">
+              Implementación
+            </h4>
+            <p class="text-sm leading-relaxed text-ink-muted">{p.implementation}</p>
+          </div>
+
+          <div>
+            <h4 class="mb-1.5 font-mono text-xs font-medium tracking-wider text-ink uppercase">
+              Decisión / Trade-off
+            </h4>
+            <p class="text-sm leading-relaxed text-ink-muted">{p.decision}</p>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

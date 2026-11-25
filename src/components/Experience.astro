@@ -1,0 +1,80 @@
+---
+const experiences = [
+  {
+    period: "Ago 2026 – Actualidad",
+    role: "Desarrollador Full-Stack",
+    org: "Origen · Proyecto propio en colaboración",
+    bullets: [
+      "Diseño y desarrollo del backend con Laravel 13, Eloquent ORM y bases de datos SQL: migraciones, modelado relacional, seguridad e integridad de la información.",
+      "Implementación de funcionalidades impulsadas por IA (escaneo y extracción automática de datos de etiquetas) para optimizar procesos y flujos de registro.",
+      "Automatización del control de calidad mediante pipelines de CI con GitHub Actions y análisis estático con PHPStan.",
+      "Integración de endpoints con el frontend (Vue 3 / Inertia.js) cuidando la eficiencia y los tiempos de respuesta de la API."
+    ]
+  },
+  {
+    period: "May 2026 – Jul 2026",
+    role: "Desarrollador Backend / Full-Stack (Prácticas)",
+    org: "IT Academy (Barcelona Activa)",
+    bullets: [
+      "Desarrollo full-stack en equipo de ~15 personas (con Scrum Master y Tech Lead) construyendo una plataforma wiki colaborativa bajo metodología Scrum.",
+      "Backend en PHP/Laravel siguiendo arquitectura MVC y enfoque Contract-First API para garantizar contratos claros con el frontend.",
+      "Desarrollo de componentes en React + TypeScript con integración de API REST y tests automatizados con PHPUnit, Vitest y Testing Library.",
+      "Flujo Gitflow con Pull Requests, code reviews, tablero Kanban (GitHub Projects) y pipelines CI/CD."
+    ]
+  },
+  {
+    period: "2017 – 2025",
+    role: "Especialista en Diagnóstico y Soporte Técnico",
+    org: "Adamo",
+    bullets: [
+      "Monitorización, diagnóstico y resolución de incidencias técnicas complejas en infraestructuras de red FTTH y móvil.",
+      "Análisis de causa raíz para prevenir fallos recurrentes y mejorar la calidad de servicio."
+    ]
+  },
+  {
+    period: "Mar 2015 – Jul 2015",
+    role: "Desarrollador Full-Stack (Prácticas DAW)",
+    org: "Epinium",
+    bullets: [
+      "Desarrollo de funcionalidades backend y frontend en entorno Node.js, Express, React y MongoDB.",
+      "Trabajo con APIs REST y control de versiones con Git."
+    ]
+  }
+];
+---
+
+<section
+  id="experiencia"
+  class="mx-auto max-w-5xl scroll-mt-18 border-t border-line-soft px-5 py-16"
+>
+  <div class="mb-8 flex items-baseline justify-between gap-4 border-b border-line-strong pb-3">
+    <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+      Experiencia laboral
+    </h2>
+  </div>
+
+  <div class="flex flex-col">
+    {experiences.map((item, idx) => (
+      <article
+        class:list={[
+          "grid grid-cols-1 gap-3 border-b border-line-soft py-6 last:border-b-0 md:grid-cols-[230px_1fr] md:gap-8",
+          idx === 0 && "pt-1"
+        ]}
+      >
+        <div class="flex flex-col gap-1">
+          <time class="font-mono text-xs font-medium text-ink">{item.period}</time>
+          <span class="text-sm text-ink-muted">{item.org}</span>
+        </div>
+
+        <div>
+          <h3 class="mb-2.5 text-base font-semibold text-ink">{item.role}</h3>
+          <ul class="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-ink-muted">
+            {item.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

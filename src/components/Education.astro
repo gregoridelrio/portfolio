@@ -1,0 +1,42 @@
+---
+const education = [
+  {
+    period: "Octubre 2025 – Abril 2026",
+    title: "Bootcamp Full-Stack PHP / Laravel",
+    institution: "IT Academy (Barcelona Activa)"
+  },
+  {
+    period: "Septiembre 2025 – Diciembre 2025",
+    title: "Bootcamp JavaScript / React / Node / Express",
+    institution: "CIFO La Violeta"
+  },
+  {
+    period: "Septiembre 2015 – Junio 2017",
+    title: "CFGS Desarrollo de Aplicaciones Web (DAW)",
+    institution: "IES Thos i Codina, Mataró"
+  }
+];
+---
+
+<section
+  id="formacion"
+  class="mx-auto max-w-5xl scroll-mt-18 border-t border-line-soft px-5 py-16"
+>
+  <div class="mb-8 flex items-baseline justify-between gap-4 border-b border-line-strong pb-3">
+    <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+      Formación académica
+    </h2>
+  </div>
+
+  <div class="rounded-[2px] border border-line-soft bg-surface">
+    {education.map((ed) => (
+      <div class="grid grid-cols-1 gap-1 border-b border-line-soft px-5 py-4 last:border-b-0 md:grid-cols-[240px_1fr] md:items-baseline md:gap-6">
+        <span class="font-mono text-xs text-ink-muted">{ed.period}</span>
+        <div>
+          <h3 class="text-sm font-semibold text-ink sm:text-base">{ed.title}</h3>
+          <p class="mt-0.5 text-sm text-ink-muted">{ed.institution}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

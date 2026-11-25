@@ -1,0 +1,94 @@
+---
+const skillGroups = [
+  {
+    area: "Backend",
+    items: [
+      "PHP 8+",
+      "Laravel",
+      "API REST",
+      "Eloquent ORM",
+      "Node.js",
+      "Express"
+    ]
+  },
+  {
+    area: "Frontend",
+    items: [
+      "TypeScript",
+      "React",
+      "Vue 3",
+      "Inertia.js",
+      "Tailwind CSS",
+      "Blade"
+    ]
+  },
+  {
+    area: "Bases de Datos",
+    items: [
+      "MySQL",
+      "MongoDB",
+      "Supabase",
+      "Migraciones y Seeders"
+    ]
+  },
+  {
+    area: "Testing y Calidad",
+    items: [
+      "PHPUnit",
+      "Pest",
+      "Vitest",
+      "React Testing Library",
+      "PHPStan",
+      "Swagger / OpenAPI"
+    ]
+  },
+  {
+    area: "Herramientas",
+    items: [
+      "Git",
+      "GitHub",
+      "GitHub Actions",
+      "Docker",
+      "ESLint",
+    ]
+  },
+  {
+    area: "Metodologías y Arquitectura",
+    items: [
+      "Scrum",
+      "Gitflow",
+      "MVC",
+      "TDD",
+      "Clean Code"
+    ]
+  }
+];
+---
+
+<section
+  id="skills"
+  class="mx-auto max-w-5xl scroll-mt-18 border-t border-line-soft px-5 py-16"
+>
+  <div class="mb-8 border-b border-line-strong pb-3">
+    <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+      Skills
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {skillGroups.map((group) => (
+      <div class="rounded-[2px] border border-line-soft bg-surface p-5">
+        <h3 class="mb-3.5 border-b border-line-soft pb-2 font-mono text-xs font-medium tracking-wider text-ink uppercase">
+          {group.area}
+        </h3>
+        <ul class="flex flex-wrap gap-1.5" aria-label={`Tecnologías de ${group.area}`}>
+          {group.items.map((item) => (
+            <li class="rounded-[2px] border border-line-soft bg-canvas px-2 py-1 font-mono text-xs text-ink">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

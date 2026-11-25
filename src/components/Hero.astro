@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import myImage from '../assets/foto-laurea.jpg';
+---
+
+<section class="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-5 py-16 md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:py-24">
+  {/* Columna de texto (Primero en móvil, izquierda en escritorio) */}
+  <div>
+    <p class="mb-2 font-mono text-sm text-ink-muted">
+      Hola, soy
+    </p>
+
+    <h1 class="mb-2 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+      Laurea Gregori
+    </h1>
+
+    <p class="mb-6 font-mono text-base font-medium text-ok sm:text-lg">
+      &lt; Software Developer /&gt;
+    </p>
+
+    <p class="mb-8 max-w-[62ch] text-base leading-relaxed text-ink-muted">
+      Desarrollador Full-Stack especializado en PHP, Laravel, Node y Express, con experiencia en proyectos colaborativos reales. Vengo del sector técnico y customer care, con más de 8 años diagnosticando incidencias de red, y eso me ha dado una forma de trabajar ordenada, analítica y muy resolutiva bajo presión.
+    </p>
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-3">
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="#proyectos"
+          class="inline-flex items-center rounded-[2px] border border-line-strong bg-line-strong px-4 py-2.5 font-mono text-xs text-surface transition-colors duration-150 hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+        >
+          Ver proyectos
+        </a>
+        <a
+          href="#contacto"
+          class="inline-flex items-center rounded-[2px] border border-line-strong bg-surface px-4 py-2.5 font-mono text-xs text-ink transition-colors duration-150 hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+        >
+          Contacto
+        </a>
+      </div>
+
+      <span class="hidden h-5 w-px bg-line-soft sm:inline-block" aria-hidden="true"></span>
+
+      <div class="flex items-center gap-4 font-mono text-xs text-ink-muted">
+        <a
+          href="https://github.com/gregoridelrio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-4 transition-colors hover:text-ok focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+        >
+          GitHub ↗
+        </a>
+        <a
+          href="https://www.linkedin.com/in/laureagregoridelrio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-4 transition-colors hover:text-ok focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-strong"
+        >
+          LinkedIn ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* Columna de foto (Debajo en móvil, derecha en escritorio) */}
+  <aside class="flex justify-center md:justify-end">
+    <div class="h-64 w-64 overflow-hidden rounded-full border border-line-strong">
+      <Image
+        src={myImage}
+        alt="Foto de Laurea Gregori"
+        width={256}
+        height={256}
+        class="h-full w-full object-cover object-center grayscale contrast-125"
+      />
+    </div>
+  </aside>
+</section>
